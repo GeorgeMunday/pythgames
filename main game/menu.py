@@ -24,12 +24,15 @@ def adult_main():
             if choice2 == 1:
                 loading()
                 blackjack.main()
+                loading()
             elif choice2 == 2:
                 loading()
                 roulette.main()
+                loading()
             elif choice2 == 3:
                 loading()
                 slotmachine.main()
+                loading()
             elif choice2 == 4 :
                 loading()
                 kid_main()

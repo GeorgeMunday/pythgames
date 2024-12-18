@@ -43,7 +43,7 @@ def main():
                 bank += win  # Add winnings to bank
                 print(f"Congratulations! You won {win} tokens!")
             else:
-                print("you win")
+                print("you lose")
             print(f"Your new balance: {bank} tokens")
         else:
             print(Fore.RED + "Invalid input. Please press Enter to spin or type 'quit' to stop.")
