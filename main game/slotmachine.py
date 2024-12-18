@@ -1,7 +1,7 @@
 import random
 from time import sleep
 from colorama import Fore
-list1 = ["🍒", "🍋", "🍊", "🍉", "🔔", "💎"]
+list1 = ["🍒", "🍋", "🍊", "🍉", "🍎", "🍍", "🍇", "🍓"]
 
 
 
@@ -14,7 +14,7 @@ def check_win(result):
     if len(set(result)) == 1:
         return 10  
     if "🍋" in result:
-        return 1 
+        return 3
     
     return 0
 
