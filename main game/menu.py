@@ -14,10 +14,17 @@ def exit_games():
     exit()
     
 def adult_main():
-    choice2 = ""
+    choice2 = 0
     print("Welcome to the adults gaming area! We have 3 games on offer.")
     print("To start off, we will give you 100 tokens per game the goal is to get as many as posible !!.")
-    while True:
+    options = {
+        "1": blackjack.main,
+        "2": roulette.main,
+        "3": slotmachine.main,
+        "4": kid_main,
+        "5": exit_games
+        }
+    while choice2 < 5 :
         choice2 = input(Fore.WHITE + "What would you like to play :\n1. = Blackjack\n2. = Roulette\n3. = Slotmachine\n4. = Kids games\n5. = Quit \nEnter here:")
         if choice2.isnumeric():
             choice2 = int(choice2)
