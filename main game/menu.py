@@ -3,6 +3,10 @@ from colorama import Fore
 import blackjack
 import roulette
 import slotmachine
+import noughtsandcrosses
+import numberguess
+import rockpaperscissors
+ 
 
 def loading():
     print("loading...")
@@ -25,35 +29,25 @@ def adult_main():
         "5": exit_games
         }
     while choice2 < 5 :
-        choice2 = input(Fore.WHITE + "What would you like to play :\n1. = Blackjack\n2. = Roulette\n3. = Slotmachine\n4. = Kids games\n5. = Quit \nEnter here:")
-        if choice2.isnumeric():
-            choice2 = int(choice2)
-            if choice2 == 1:
-                loading()
-                blackjack.main()
-                loading()
-            elif choice2 == 2:
-                loading()
-                roulette.main()
-                loading()
-            elif choice2 == 3:
-                loading()
-                slotmachine.main()
-                loading()
-            elif choice2 == 4 :
-                loading()
-                kid_main()
-            elif choice2 == 5 :
-                loading()
-                exit_games()
-            else:
-                print(Fore.RED + "Invalid input")
+        choice2 = input(Fore.WHITE + "What would you like to play :\n1. = Blackjack \n2. = Roulette\n3. = Slotmachine\n4. = Kids games\n5. = Quit \nEnter here")
+        if choice2.isnumeric:
+           choice2 = int(choice2)
+           loading()
+           options[str(choice2)]()
+           loading()
         else:
-            print(Fore.RED + "invalid input")
-    
+            print(Fore.RED + "invalid inout")
+        
 def kid_main():
     choice3 = ""
     print("Welcome to the kids gaming area! We have 3 games that you can play.")
+    options = {
+        "1": noughtsandcrosses.main,
+        "2": roulette.main,
+        "3": slotmachine.main,
+        "4": kid_main,
+        "5": exit_games
+    }
     while True:
         choice3 = input(Fore.WHITE + "What would you like to play:\n1. = noughtsandcrosses\n2. = guess the number\n3. = rock paper scissors\nEnter here: ")
         if choice3.isnumeric():
