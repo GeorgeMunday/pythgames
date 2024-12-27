@@ -6,72 +6,73 @@ import slotmachine
 import noughtsandcrosses
 import numberguess
 import rockpaperscissors
- 
- 
 
 def loading():
     print("loading...")
     sleep(1)
     print("-" * 40)
-    
+
 def exit_games():
-    print("thank you for playing hope to see you soon")
+    print("Thank you for playing, hope to see you soon!")
     exit()
-    
+
 def adult_main():
-    choice2 = 0
     print("Welcome to the adults gaming area! We have 3 games on offer.")
-    print("To start off, we will give you 100 tokens per game the goal is to get as many as posible !!.")
+    print("To start off, we will give you 100 tokens per game; the goal is to get as many as possible!!")
+    
     options = {
         "1": blackjack.main,
         "2": roulette.main,
         "3": slotmachine.main,
         "4": kid_main,
         "5": exit_games
-        }
-    while choice2 < 5 :
-        choice2 = input(Fore.WHITE + "What would you like to play :\n1. = Blackjack \n2. = Roulette\n3. = Slotmachine\n4. = Kids games\n5. = Quit \nEnter here")
-        if choice2.isnumeric:
-           choice2 = int(choice2)
-           loading()
-           options[str(choice2)]()
-           loading()
-        else:
-            print(Fore.RED + "invalid inout")
+    }
+    
+    while True:
+        choice2 = input(Fore.WHITE + "What would you like to play :\n1. = Blackjack \n2. = Roulette\n3. = Slotmachine\n4. = Kids games\n5. = Quit \nEnter here: ")
         
+        if choice2.isnumeric():  # Check if input is numeric
+            choice2 = int(choice2)
+            if 1 <= choice2 <= 5:
+                loading()
+                options[str(choice2)]()  # Call the corresponding game function
+                loading()
+            else:
+                print(Fore.RED + "Invalid choice, please enter a number between 1 and 5.")
+        else:
+            print(Fore.RED + "Invalid input, please enter a valid number.")
+
 def kid_main():
-    choice3 = ""
     print("Welcome to the kids gaming area! We have 3 games that you can play.")
+    
     options = {
         "1": noughtsandcrosses.main,
-        "2": roulette.main,
-        "3": slotmachine.main,
+        "2": numberguess.main,
+        "3": rockpaperscissors.main,
         "4": kid_main,
         "5": exit_games
     }
+    
     while True:
-        choice3 = input(Fore.WHITE + "What would you like to play:\n1. = noughtsandcrosses\n2. = guess the number\n3. = rock paper scissors\nEnter here: ")
-        if choice3.isnumeric():
+        choice3 = input(Fore.WHITE + "What would you like to play :\n1. = Noughts and Crosses \n2. = Number Guessing\n3. = Rock Paper Scissors\n4. = Kids games\n5. = Quit \nEnter here: ")
+        
+        if choice3.isnumeric():  # Check if input is numeric
             choice3 = int(choice3)
-            if choice3 == 1:
+            if 1 <= choice3 <= 5:
                 loading()
-                # Call the noughtsandcrosses game function
-            elif choice3 == 2:
+                options[str(choice3)]()  # Call the corresponding game function
                 loading()
-                # Call the guess the number game function
-            elif choice3 == 3:
-                loading()
-                # Call the rock paper scissors game function
             else:
-                print(Fore.RED + "Invalid input")
+                print(Fore.RED + "Invalid choice, please enter a number between 1 and 5.")
         else:
-            print(Fore.RED + "Invalid input")
-            
+            print(Fore.RED + "Invalid input, please enter a valid number.")
+
 def main():
     while True:
         print(Fore.WHITE + "Welcome to Python games")
         choice1 = input("What is your age?\nEnter here: ")
-        if choice1.isnumeric():
+        
+        if choice1.isnumeric():  # Check if input is numeric
             choice1 = int(choice1)
             if choice1 > 17:
                 loading()
@@ -80,8 +81,9 @@ def main():
                 loading()
                 kid_main()
             else:
-                print(Fore.RED + "Invalid input")
+                print(Fore.RED + "Invalid input, age must be a positive number.")
         else:
-            print(Fore.RED + "Invalid")
+            print(Fore.RED + "Invalid input, please enter a valid number.")
+
 if __name__ == "__main__":
     main()
