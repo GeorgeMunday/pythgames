@@ -49,12 +49,11 @@ def kid_main():
         "1": noughtsandcrosses.main,
         "2": numberguess.main,
         "3": rockpaperscissors.main,
-        "4": kid_main,
-        "5": exit_games
+        "4": exit_games
     }
     
     while True:
-        choice3 = input(Fore.WHITE + "What would you like to play :\n1. = Noughts and Crosses \n2. = Number Guessing\n3. = Rock Paper Scissors\n4. = Kids games\n5. = Quit \nEnter here: ")
+        choice3 = input(Fore.WHITE + "What would you like to play :\n1. = Noughts and Crosses \n2. = Number Guessing\n3. = Rock Paper Scissors\n4. = Quit \nEnter here: ")
         
         if choice3.isnumeric():  # Check if input is numeric
             choice3 = int(choice3)
