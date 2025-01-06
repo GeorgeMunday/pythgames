@@ -25,7 +25,7 @@ def main():
     while bank > 0:
         choice1 = input(Fore.WHITE + "Press Enter to pull the lever or type 'quit' to stop playing:").lower()
         if choice1 == 'quit':
-            print("Thanks for playing! See you next time.")
+            print("taking you back to main menu.")
             break
         elif choice1 == "":
             bank -= 1  # deduct 1 token for each spin
@@ -48,7 +48,7 @@ def main():
         else:
             print(Fore.RED + "Invalid input. Please press Enter to spin or type 'quit' to stop.")
     if bank <= 0:
-        print(Fore.RED + "You're out of tokens. Game over!")
+        print(Fore.RED + "You're out of tokens. Game over! taking you back to main menu")
 
 if __name__ == "__main__":
     main()
