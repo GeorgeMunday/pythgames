@@ -1,23 +1,15 @@
 import random
-
+from colorama import Fore
 def spin(level):
-    if level == 1:
-        return random.randint(1, 10)
-    elif level == 2:
-        return random.randint(1, 50)
-    elif level == 3:
-        return random.randint(1, 100)
-    elif level == 4:
-        return random.randint(1, 250)
-    elif level == 5:
-        return random.randint(1, 1000)
-    else:
+    ranges = {1: 10, 2: 50, 3: 100, 4: 250, 5: 1000}
+    if level not in ranges:
         print("Invalid level!")
         return None
+    return random.randint(1, ranges[level]) 
     
 def exit_game():
     while True:
-        choice = input("Would you like to continue (yes/no)? ").strip().lower()
+        choice = input(Fore.WHITE + "Would you like to continue (yes/no)? ").strip().lower()
         if choice == "no":
             print("taking you back to main menu")
             exit()
@@ -25,18 +17,18 @@ def exit_game():
             print("-" * 40)
             main()
         else:
-            print("Invalid input, please try again.")
+            print(Fore.RED + "Invalid input, please try again.")
 
 def main():
     while True:
-        print("Welcome to the Number Guess Game!!")
+        print(Fore.WHITE + "Welcome to the Number Guess Game!!")
         try:
             level = int(input("What level would you like to play (1/2/3/4/5)? \nEnter here:"))
             if level < 1 or level > 5:
-                print("Invalid level! Please choose a level between 1 and 5.")
+                print(Fore.RED + "Invalid level! Please choose a level between 1 and 5.")
                 continue
         except ValueError:
-            print("Invalid input. Please enter a number between 1 and 5.")
+            print(Fore.RED + "Invalid input. Please enter a number between 1 and 5.")
             continue
         
         number = spin(level)
@@ -55,9 +47,9 @@ def main():
         count = 0
         while True:
             try:
-                choice1 = int(input("Pick your number: "))
+                choice1 = int(input(Fore.WHITE + "Pick your number: "))
                 count += 1
-                
+
                 if choice1 == number:
                     print(f"Congrats! You guessed the number {number} in {count} turns!")
                     exit_game()
@@ -66,7 +58,7 @@ def main():
                 elif choice1 > number:
                     print("Pick a lower number.")
             except ValueError:
-                print("invalid input please ty again.")
+                print(Fore.RED + "invalid input please try again.")
                 
 if __name__ == "__main__":
     main()

@@ -1,6 +1,13 @@
+import random
+
+def card_gen():
+    print("")
+    
+
+
+
 def main():
-    print("hello")
-    print("yay")
-    exit()
+    print("welcome to blackjack!!")
+    
 if __name__ == "__main__":
     main()
