@@ -31,11 +31,11 @@ def adult_main():
     while True:
         choice2 = input(Fore.WHITE + "What would you like to play :\n1. = Blackjack \n2. = Roulette\n3. = Slotmachine\n4. = Kids games\n5. = Quit \nEnter here: ")
         
-        if choice2.isnumeric():  # Check if input is numeric
+        if choice2.isnumeric():  # check if input is numeric
             choice2 = int(choice2)
             if 1 <= choice2 <= 5:
                 loading()
-                options[str(choice2)]()  # Call the corresponding game function
+                options[str(choice2)]()  # call the corresponding game function
                 loading()
             else:
                 print(Fore.RED + "Invalid choice, please enter a number between 1 and 5.")
@@ -55,11 +55,11 @@ def kid_main():
     while True:
         choice3 = input(Fore.WHITE + "What would you like to play :\n1. = Noughts and Crosses \n2. = Number Guessing\n3. = Rock Paper Scissors\n4. = Quit \nEnter here: ")
         
-        if choice3.isnumeric():  # Check if input is numeric
+        if choice3.isnumeric():  # check if input is numeric
             choice3 = int(choice3)
             if 1 <= choice3 <= 5:
                 loading()
-                options[str(choice3)]()  # Call the corresponding game function
+                options[str(choice3)]()  # call the corresponding game function
                 loading()
             else:
                 print(Fore.RED + "Invalid choice, please enter a number between 1 and 5.")
@@ -71,7 +71,7 @@ def main():
         print(Fore.WHITE + "Welcome to Python games")
         choice1 = input("What is your age?\nEnter here: ")
         
-        if choice1.isnumeric():  # Check if input is numeric
+        if choice1.isnumeric():  # check if input is numeric
             choice1 = int(choice1)
             if choice1 > 17:
                 loading()

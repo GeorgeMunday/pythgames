@@ -28,7 +28,7 @@ def main():
             print("Thanks for playing! See you next time.")
             break
         elif choice1 == "":
-            bank -= 1  # Deduct 1 token for each spin
+            bank -= 1  # deduct 1 token for each spin
             result = []
             for _ in range(3):
                 position = machine_result()
@@ -37,10 +37,10 @@ def main():
                 sleep(0.5)
             print()
             
-            # Check if the player won
+            # check if the player won
             win = check_win(result)
             if win > 0:
-                bank += win  # Add winnings to bank
+                bank += win  # add winnings to bank
                 print(f"Congratulations! You won {win} tokens!")
             else:
                 print("you lose")
