@@ -94,6 +94,6 @@ def main():
             list1.append(choice1)  # Add the guess to the list of guessed numbers
             count += 1  # Increment the attempt counter
 
-# Entry point of the program
+
 if __name__ == "__main__":
-    main()  # Call the main function to start the game
+    main()

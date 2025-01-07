@@ -15,13 +15,12 @@ def check_win(result):
         return 10  
     if "🍋" in result:
         return 3
-    
-    
+
     return 0
 
 def main():
     bank = 100
-    print("Welcome to the slot machine!")
+    print("Welcome to the slot machine! the goal of the game is to get a lemon or three of a kind")
     print(f"You have {bank} tokens.")
     while bank > 0:
         choice1 = input(Fore.WHITE + "Press Enter to pull the lever or type 'quit' to stop playing:").lower()
