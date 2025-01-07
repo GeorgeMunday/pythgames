@@ -12,7 +12,7 @@ def exit_game():
         choice = input(Fore.WHITE + "Would you like to continue (yes/no)? ").strip().lower()
         if choice == "no":
             print("taking you back to main menu")
-            exit()
+            return ""
         elif choice == "yes":
             print("-" * 40)
             main()
@@ -49,10 +49,10 @@ def main():
             try:
                 choice1 = int(input(Fore.WHITE + "Pick your number: "))
                 count += 1
-
                 if choice1 == number:
                     print(f"Congrats! You guessed the number {number} in {count} turns!")
                     exit_game()
+                    return ""
                 elif choice1 < number:
                     print("Pick a higher number.")
                 elif choice1 > number:
@@ -62,3 +62,4 @@ def main():
                 
 if __name__ == "__main__":
     main()
+    
