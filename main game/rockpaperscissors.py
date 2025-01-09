@@ -21,11 +21,9 @@ def game():
             continue
         computer_choice = random.choice(choices)
         print(f"Computer chose: {computer_choice}")
-        
+
         if player_choice == computer_choice:
             print("It's a tie!")
-            user_score += 1
-            computer_score += 1
             print(f"score is {user_score}:{computer_score}")
         elif rules[player_choice] == computer_choice:
             print("You win!")

@@ -3,8 +3,6 @@ from time import sleep
 from colorama import Fore
 list1 = ["🍒", "🍋", "🍊", "🍉", "🍎", "🍍", "🍇", "🍓"]
 
-
-
 def machine_result():
     result = random.choice(list1)
     return result
