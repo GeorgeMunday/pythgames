@@ -3,7 +3,7 @@ from colorama import Fore
 import blackjack
 import roulette
 import slotmachine
-import noughtsandcrosses
+import quiz
 import numberguess
 import rockpaperscissors
 
@@ -46,7 +46,7 @@ def kid_main():  # The main menu for the kids games
     print("Welcome to the kids gaming area! We have 3 games that you can play.")  # Welcome message for kids games
     
     options = {
-        "1": noughtsandcrosses.main,  # Option 1: Noughts and Crosses (Tic-Tac-Toe)
+        "1": quiz.main,  # Option 1: Noughts and Crosses (Tic-Tac-Toe)
         "2": numberguess.main,  # Option 2: Number Guessing Game
         "3": rockpaperscissors.main,  # Option 3: Rock, Paper, Scissors
         "4": exit_games  # Option 4: Exit the game
