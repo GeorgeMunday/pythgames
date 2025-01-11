@@ -49,15 +49,17 @@ def kid_main():  # The main menu for the kids games
         "1": quiz.main,  # Option 1: Noughts and Crosses (Tic-Tac-Toe)
         "2": numberguess.main,  # Option 2: Number Guessing Game
         "3": rockpaperscissors.main,  # Option 3: Rock, Paper, Scissors
-        "4": exit_games  # Option 4: Exit the game
+        "4": exit_games, # option: exit games
+        "5": main # option:5 back to main menu
+        
     }
     
     while True:  # Continuously prompt user for their choice
-        choice3 = input(Fore.WHITE + "What would you like to play :\n1. = Noughts and Crosses \n2. = Number Guessing\n3. = Rock Paper Scissors\n4. = Quit \nEnter here: ")
+        choice3 = input(Fore.WHITE + "What would you like to play :\n1. = flag quiz \n2. = Number Guessing\n3. = Rock Paper Scissors\n4. = Quit \n5. = back to main menu\nEnter here: ")
         
         if choice3.isnumeric():  # Check if the input is a valid number
             choice3 = int(choice3)  # Convert input to integer
-            if 1 <= choice3 <= 4:  # Validate the input is within the correct range
+            if 1 <= choice3 <= 5:  # Validate the input is within the correct range
                 loading()  # Call loading function before starting the game
                 options[str(choice3)]()  # Call the selected game function
                 loading()  # Call loading after each game
