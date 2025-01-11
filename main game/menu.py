@@ -27,7 +27,6 @@ def adult_main():  # The main menu for the adult games
         "4": kid_main,  # Option 4: Switch to kids games
         "5": exit_games  # Option 5: Exit the game
     }
-    
     while True:  # Continuously prompt user for their choice
         choice2 = input(Fore.WHITE + "What would you like to play :\n1. = Blackjack \n2. = Roulette\n3. = Slotmachine\n4. = Kids games\n5. = Quit \nEnter here: ")
 
