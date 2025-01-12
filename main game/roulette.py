@@ -1,6 +1,7 @@
 import random
 
 def bank_balance(bank, bet_amount, result, choice):
+    # Update the bank balance based on the result of the bet
     if result == "win":
         # Update the bank balance based on the bet type
         if choice in [1, 2, 3]:  # Odd/Even, Red/Black, High/Low
@@ -12,6 +13,7 @@ def bank_balance(bank, bet_amount, result, choice):
     return bank
 
 def place_bet(choice, money):
+    # Define the betting options
     options = {
         1: ["odd", "even"],
         2: ["red", "black"],
@@ -42,12 +44,13 @@ def place_bet(choice, money):
                 bet_choice = int(input("Enter your number (0-36): "))
                 if 0 <= bet_choice <= 36:
                     return bet_amount, bet_choice
-            
+    
             print("Invalid choice. Please try again.")
         except ValueError:
             print("Invalid input. Please enter a number.")
 
 def spin_wheel():
+    # Simulate spinning the roulette wheel
     number = random.randint(0, 36)
     color = random.choice(["red", "black"])
     odd_even = "odd" if number % 2 != 0 else "even"
@@ -59,6 +62,7 @@ def main():
     print("Welcome to the Roulette Game!")
     
     while True:
+        # Display betting options to the player
         print("\nWhat would you like to bet on?")
         print("1. Odd or Even")
         print("2. Red or Black")
