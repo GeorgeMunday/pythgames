@@ -1,103 +1,109 @@
 import random
 
-def bank_balance(choice, result):
-    bank = 100  # Initial bank balance
+def bank_balance(bank, bet_amount, result, choice):
     if result == "win":
-        # If the player wins, the bank increases based on the bet type
+        # Update the bank balance based on the bet type
         if choice in [1, 2, 3]:  # Odd/Even, Red/Black, High/Low
-            bank *= 2
+            bank += bet_amount
         elif choice == 4:  # Specific number
-            bank *= 36
+            bank += bet_amount * 35
+    else:
+        bank -= bet_amount
     return bank
 
 def place_bet(choice, money):
-    answer = ["odd", "even"]
-    answer1 = ["red", "black"]
-    answer2 = ["high", "low"]
     options = {
-        1: "pick odd or even",
-        2: "pick red or black",
-        3: "pick high or low",
-        4: "pick a number between 0 and 36",
+        1: ["odd", "even"],
+        2: ["red", "black"],
+        3: ["high", "low"],
+        4: "a number between 0 and 36",
     }
     
     while True:
-        # Ask the player how many tokens they want to bet
-        choice1 = int(input(f"You have {money} tokens. How many tokens would you like to bet? "))
-        if choice1 > money:
-            print("You do not have enough tokens.")
-            continue
-        else:
-            print(f"You have bet {choice1} tokens.")
-            print(options.get(choice, "Invalid choice"))
+        try:
+            # Ask the player how many tokens they want to bet
+            bet_amount = int(input(f"You have {money} tokens. How many tokens would you like to bet? "))
+            if bet_amount > money:
+                print("You do not have enough tokens.")
+                break
+            if bet_amount <= 0:
+                print("Bet amount must be greater than 0.")
+                continue
+            
+            print(f"You have bet {bet_amount} tokens.")
+            print(f"Option: {options.get(choice, 'Invalid choice')}")
+            
             # Get the player's choice for the bet
-            choice2 = input("Enter your choice: ").lower().strip()
+            if choice in [1, 2, 3]:
+                bet_choice = input(f"Enter your choice ({'/'.join(options[choice])}): ").lower().strip()
+                if bet_choice in options[choice]:
+                    return bet_amount, bet_choice
+            elif choice == 4:
+                bet_choice = int(input("Enter your number (0-36): "))
+                if 0 <= bet_choice <= 36:
+                    return bet_amount, bet_choice
+            
+            print("Invalid choice. Please try again.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
 
-            # Validate the player's bet based on the chosen option
-            if choice == 1 and choice2 in answer:
-                return choice2
-            elif choice == 2 and choice2 in answer1:
-                return choice2
-            elif choice == 3 and choice2 in answer2:
-                return choice2
-            elif choice == 4 and choice2.isnumeric() and 0 <= int(choice2) <= 36:
-                return int(choice2)
-
-def result(choice):
-    # Simulate a spin of the roulette wheel
+def spin_wheel():
     number = random.randint(0, 36)
     color = random.choice(["red", "black"])
     odd_even = "odd" if number % 2 != 0 else "even"
     high_low = "high" if 19 <= number <= 36 else "low" if 1 <= number <= 18 else "zero"
-    options = {
-        1: odd_even,
-        2: color,
-        3: high_low,
-        4: number,
-    }
-    return options.get(choice, "Invalid choice")
+    return number, color, odd_even, high_low
 
 def main():
+    money = 100  # Initial bank balance
+    print("Welcome to the Roulette Game!")
+    
     while True:
-        # Ask the player what they want to bet on
-        choice = input(
-            "What would you like to bet on? \n"
-            "1. Odd or Even \n"
-            "2. Red or Black \n"
-            "3. High or Low \n"
-            "4. Specific Number \n"
-            "5. Quit \n"
-            "Enter your choice: ")
+        print("\nWhat would you like to bet on?")
+        print("1. Odd or Even")
+        print("2. Red or Black")
+        print("3. High or Low")
+        print("4. Specific Number")
+        print("5. Quit")
         
+        choice = input("Enter your choice: ")
         if choice == "5":
-            print("Taking you back to the main menu.")
+            print("Thanks for playing! Goodbye!")
             break
         
         if not choice.isnumeric() or int(choice) not in [1, 2, 3, 4]:
-            print("Invalid choice.")
+            print("Invalid choice. Please try again.")
             continue
         
         choice = int(choice)
+        bet_amount, bet_choice = place_bet(choice, money)
         
-        # Get the result of the roulette spin
-        result_spin = result(choice)
-        # Get the player's bet and current money
-        money = 100  # Starting money
-        player_choice = place_bet(choice, money)
-        print(f"The result is: {result_spin}")
+        # Spin the roulette wheel
+        number, color, odd_even, high_low = spin_wheel()
+        print(f"\nThe wheel spins... The ball lands on {number} ({color}).")
+        print(f"Odd/Even: {odd_even}, High/Low: {high_low}")
         
-        # Check if the player wins or loses
-        if player_choice == result_spin:
-            print("You win!")
-            game_result = "win"
+        # Determine if the player wins
+        result_spin = {
+            1: odd_even,
+            2: color,
+            3: high_low,
+            4: number,
+        }
+        if bet_choice == result_spin[choice]:
+            print("Congratulations, you win!")
+            result = "win"
         else:
-            print("You lose.")
-            game_result = "lose"
+            print("Sorry, you lose.")
+            result = "lose"
         
-        # Update balance after the result
-        money = bank_balance(choice, game_result)
-        print(f"Your balance is now: {money}")
+        # Update the player's bank balance
+        money = bank_balance(money, bet_amount, result, choice)
+        print(f"Your new balance is: {money} tokens.")
+        
+        if money <= 0:
+            print("You are out of money! Game over.")
+            break
 
-# Run the game
 if __name__ == "__main__":
     main()
