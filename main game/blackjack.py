@@ -43,12 +43,6 @@ def main():
             print("you lose")
         else:
             print("you lose")
-    
-        
-        
-    
-    
 
-    
 if __name__ == "__main__":
     main()

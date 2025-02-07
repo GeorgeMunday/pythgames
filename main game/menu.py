@@ -3,7 +3,6 @@ from colorama import Fore
 import blackjack
 import roulette
 import slotmachine
-import quiz
 import numberguess
 import rockpaperscissors
 
@@ -44,17 +43,16 @@ def adult_main():  # The main menu for the adult games
 def kid_main():  # The main menu for the kids games
     print("Welcome to the kids gaming area! We have 3 games that you can play.")  # Welcome message for kids games
     
-    options = {
-        "1": quiz.main,  # Option 1: Noughts and Crosses (Tic-Tac-Toe)
-        "2": numberguess.main,  # Option 2: Number Guessing Game
-        "3": rockpaperscissors.main,  # Option 3: Rock, Paper, Scissors
-        "4": exit_games, # option: exit games
-        "5": main # option:5 back to main menu
+    options = {  # Option 1: Noughts and Crosses (Tic-Tac-Toe)
+        "1": numberguess.main,  # Option 2: Number Guessing Game
+        "2": rockpaperscissors.main,  # Option 3: Rock, Paper, Scissors
+        "3": exit_games, # option: exit games
+        "4": main # option:5 back to main menu
         
     }
     
     while True:  # Continuously prompt user for their choice
-        choice3 = input(Fore.WHITE + "What would you like to play :\n1. = flag quiz \n2. = Number Guessing\n3. = Rock Paper Scissors\n4. = Quit \n5. = back to main menu\nEnter here: ")
+        choice3 = input(Fore.WHITE + "What would you like to play : \n1. = Number Guessing\n2. = Rock Paper Scissors\n3. = Quit \n4. = back to main menu\nEnter here: ")
         
         if choice3.isnumeric():  # Check if the input is a valid number
             choice3 = int(choice3)  # Convert input to integer
